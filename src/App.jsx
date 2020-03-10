@@ -1,7 +1,11 @@
 import React from 'react';
 
+import SearchWidget from './components/SearchWidget';
+
 const App = () => (
-  <div>Hello World</div>
+  <div className="container">
+    <SearchWidget />
+  </div>
 );
 
 export default App;

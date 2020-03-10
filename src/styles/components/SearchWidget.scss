@@ -1,0 +1,19 @@
+
+.c-search-widget {
+  max-width: 100%;
+  background-color: $booking-orange;
+  padding: 8px;
+
+  @include md {
+    max-width: 480px;
+    padding: 24px;
+  }
+}
+
+.c-search-widget__title {
+  margin-bottom: 1rem;
+
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 2rem;
+}
