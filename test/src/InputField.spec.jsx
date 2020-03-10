@@ -46,4 +46,18 @@ describe('InputField', () => {
 
     expect(mockOnChange).toHaveBeenCalled();
   });
+
+  it('renders input field label when label prop provided', () => {
+    const label = 'test-label';
+
+    const wrapper = mount(<InputField label={label} />);
+
+    expect(wrapper.find('.c-input-field__label').text()).toEqual(label);
+  });
+
+  it('does not render label whenlabel prop not provided', () => {
+    const wrapper = mount(<InputField />);
+
+    expect(wrapper.find('.c-input-field__label').length).toEqual(0);
+  });
 });

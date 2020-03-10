@@ -1,5 +1,11 @@
 
-.c-input-field {
+.c-input-field__label {
+  display: block;
+  line-height: 1.25rem;
+  padding: 0 0 4px;
+  font-size: .875rem;
+  font-weight: 400;
+  color: #444;
 }
 
 .c-input-field__input {
@@ -8,4 +14,9 @@
   font-size: 1rem;
 
   border-color: #c8ae5b;
+
+  &:focus {
+    border-color: #0f6193;
+    outline: 0;
+  }
 }
