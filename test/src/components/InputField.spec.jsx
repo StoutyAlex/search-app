@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import InputField from '../../src/components/InputField';
+import InputField from '../../../src/components/InputField';
 
 describe('InputField', () => {
   it('renders input field', () => {
