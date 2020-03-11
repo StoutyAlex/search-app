@@ -51,5 +51,12 @@ describe('SearchResultItem', () => {
 
       expect(iconWrapper.length).toBe(0);
     });
+
+    it('should use --no-icon varient of detail when no icon', () => {
+      const wrapper = mount(<SearchResultItem mainText="main" />);
+      const detail = wrapper.find('.c-search-result-item__detail--no-icon');
+
+      expect(detail.length).toBe(1);
+    });
   });
 });

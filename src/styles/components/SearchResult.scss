@@ -8,6 +8,9 @@
 
 .c-search-result-item__icon {
   width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .c-search-result-item__detail {
@@ -22,7 +25,21 @@
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 16px;
-  padding-left: 16px;
+
+  &--no-icon {
+    display: flex;
+    flex-direction: column;
+  
+    width: 80%;
+  
+    line-height: 1.25em;
+    color: #333;
+  
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
 }
 
 .c-search-result-item__detail-main {
