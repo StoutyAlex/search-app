@@ -1,0 +1,34 @@
+
+.c-search-result-item {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.c-search-result-item__icon {
+  width: 20%;
+}
+
+.c-search-result-item__detail {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+
+  line-height: 1.25em;
+  color: #333;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.c-search-result-item__detail-main {
+  font-size: 14px;
+}
+
+.c-search-result-item__detail-supporting {
+  font-size: 12px;
+}
