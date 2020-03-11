@@ -1,0 +1,28 @@
+
+.c-location-icon__pill {
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 4px;
+  min-width: 60px;
+}
+
+.c-location-icon {
+  background-color: black;
+  color: white;
+
+  &--airport {
+    background-color: rgb(150, 20, 18);
+    color: white;
+  }
+
+  &--city {
+    background-color: rgb(10, 99, 176);
+    color: white;
+  }
+
+  &--station {
+    background-color: rgb(91, 91, 91);
+    color: white;
+  }
+}
