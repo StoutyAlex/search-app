@@ -1,9 +1,9 @@
 import axios from 'axios';
-import fetchData from '../../../src/lib/fetchData';
+import fetchLocations from '../../../src/lib/fetchLocations';
 
 jest.mock('axios');
 
-describe('fetchData', () => {
+describe('fetchLocations', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
@@ -11,7 +11,7 @@ describe('fetchData', () => {
   it('should make call to url', async () => {
     const url = 'www.google.com';
 
-    await fetchData(url);
+    await fetchLocations(url);
 
     expect(axios.get).toHaveBeenCalledWith(url);
   });
