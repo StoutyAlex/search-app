@@ -47,6 +47,24 @@ describe('InputField', () => {
     expect(mockOnChange).toHaveBeenCalled();
   });
 
+  it('calls prop onBlur when input is bured', () => {
+    const onBlur = jest.fn();
+
+    const input = mount(<InputField onBlur={onBlur} />).find('input');
+    input.simulate('blur');
+
+    expect(onBlur).toHaveBeenCalled();
+  });
+
+  it('calls prop onFocus when input is focused', () => {
+    const onFocus = jest.fn();
+
+    const input = mount(<InputField onFocus={onFocus} />).find('input');
+    input.simulate('focus');
+
+    expect(onFocus).toHaveBeenCalled();
+  });
+
   it('renders input field label when label prop provided', () => {
     const label = 'test-label';
 
