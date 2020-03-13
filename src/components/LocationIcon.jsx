@@ -12,7 +12,8 @@ const typeMap = {
 };
 
 const LocationIcon = ({ type }) => {
-  const name = typeMap[type] || 'default';
+  const name = typeMap[type] || null;
+  if (!name) return null;
   const classNames = `c-location-icon--${name.toLowerCase()} c-location-icon__pill`;
 
   return (

@@ -21,4 +21,9 @@ describe('LocationIcon', () => {
     expect(wrapper.find('.c-location-icon--station').length).toBe(1);
     expect(wrapper.text()).toBe('Station');
   });
+
+  it('returns null when type does not exist', () => {
+    const wrapper = mount(<LocationIcon type="NONE-EXISTANT" />);
+    expect(wrapper.find('.c-location-icon__pill').exists()).toBe(false);
+  });
 });
