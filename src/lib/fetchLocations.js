@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const fetchLocations = async (searchTerm, itemsToReturn = 6) => {
   const params = {
@@ -20,4 +20,4 @@ const fetchLocations = async (searchTerm, itemsToReturn = 6) => {
   return response.data.results.docs || [];
 };
 
-module.exports = fetchLocations;
+export default fetchLocations;
