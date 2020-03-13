@@ -18,6 +18,8 @@ describe('SearchWidget', () => {
       placeholder: 'city, airport, station, region and district...',
       label: 'Pick-Up Location',
       onChange: expect.any(Function),
+      onBlur: expect.any(Function),
+      onFocus: expect.any(Function),
     };
 
     const wrapper = mount(<SearchWidget />);
@@ -32,11 +34,29 @@ describe('SearchWidget', () => {
       expect(wrapper.find(SearchResults).exists()).toBe(false);
     });
 
-    it('does not render SearchResults when input is empty onFocus', () => {
+    it('does not render SearchResults when input is less than 2 characters onFocus', () => {
       const wrapper = mount(<SearchWidget />);
       const input = wrapper.find('input');
       input.simulate('focus');
 
+      expect(wrapper.find(SearchResults).exists()).toBe(false);
+    });
+
+    it('renders SearchResults when input is more than 1 character onFocus', () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+      input.simulate('change', { target: { value: 'Hello' } });
+      input.simulate('focus');
+
+      expect(wrapper.find(SearchResults).exists()).toBe(true);
+    });
+
+    it('hides search results when text goes back to < 1', () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+      input.simulate('change', { target: { value: 'Hello' } });
+      expect(wrapper.find(SearchResults).exists()).toBe(true);
+      input.simulate('change', { target: { value: 'a' } });
       expect(wrapper.find(SearchResults).exists()).toBe(false);
     });
 
