@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import InputField from './InputField';
 import SearchResults from './SearchResult';
 
+import fetchLocations from '../lib/fetchLocations';
+
 const SearchWidget = () => {
   const [showResults, setShowResults] = useState(false);
   const [query, setQuery] = useState('');
+  const [results, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    if (query.length > 1) {
+      fetchLocations(query).then(setSearchResults);
+    } else {
+      setSearchResults(null);
+    }
+  }, [query]);
 
   const handleChange = (event) => {
     const { value } = event.target;
-    if (value.length > 1) {
-      setQuery(value);
-      setShowResults(true);
-    } else {
-      setShowResults(false);
-    }
-  };
-
-  const handleOnFocus = () => {
-    if (query.length > 1) setShowResults(true);
+    setQuery(value);
   };
 
   return (
@@ -31,9 +33,9 @@ const SearchWidget = () => {
         label="Pick-Up Location"
         onChange={handleChange}
         onBlur={() => setShowResults(false)}
-        onFocus={handleOnFocus}
+        onFocus={() => setShowResults(true)}
       />
-      {showResults && <SearchResults />}
+      {(showResults && results) && <SearchResults />}
     </div>
   );
 };
