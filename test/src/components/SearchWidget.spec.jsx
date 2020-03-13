@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 
 import SearchWidget from '../../../src/components/SearchWidget';
 import InputField from '../../../src/components/InputField';
+import SearchResults from '../../../src/components/SearchResult';
 
 describe('SearchWidget', () => {
   it('should render h2 with title', () => {
@@ -23,5 +24,28 @@ describe('SearchWidget', () => {
     const input = wrapper.find(InputField);
 
     expect(input.props()).toEqual(expectedProps);
+  });
+
+  describe('SearchResults', () => {
+    it('does not render SearchResults initially', () => {
+      const wrapper = mount(<SearchWidget />);
+      expect(wrapper.find(SearchResults).exists()).toBe(false);
+    });
+
+    it('does not render SearchResults when input is empty onFocus', () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+      input.simulate('focus');
+
+      expect(wrapper.find(SearchResults).exists()).toBe(false);
+    });
+
+    it('does not render SearchResults when input is onBlur', () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+      input.simulate('blur');
+
+      expect(wrapper.find(SearchResults).exists()).toBe(false);
+    });
   });
 });
