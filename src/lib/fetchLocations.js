@@ -17,7 +17,7 @@ const fetchLocations = async (searchTerm, itemsToReturn = 6) => {
     return [];
   }
 
-  return response.data.results.docs || [];
+  return response.data.results || [];
 };
 
 export default fetchLocations;

@@ -50,21 +50,13 @@ describe('fetchLocations', () => {
     expect(params.params.solrRows).toBe(4);
   });
 
-  it('should return docs array from response', async () => {
+  it('should return results object from response', async () => {
     const result = await fetchLocations('');
-    expect(result).toBe(locationResponse.data.results.docs);
+    expect(result).toBe(locationResponse.data.results);
   });
 
   it('should return empty array when error fetching data', async () => {
     axios.get.mockRejectedValue('failed');
-
-    const result = await fetchLocations('');
-
-    expect(result).toEqual([]);
-  });
-
-  it('should return empty array if data api changes', async () => {
-    axios.get.mockResolvedValue({ data: { results: { locations: [] } } });
 
     const result = await fetchLocations('');
 
