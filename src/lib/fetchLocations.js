@@ -7,19 +7,17 @@ const fetchLocations = async (searchTerm, itemsToReturn = 6) => {
     solrRows: itemsToReturn,
   };
 
-  let data;
+  let response;
 
   try {
-    const response = await axios.get('https://www.rentalcars.com/FTSAutocomplete.do', {
+    response = await axios.get('https://www.rentalcars.com/FTSAutocomplete.do', {
       params,
     });
-
-    data = response.data.results.docs || [];
   } catch (error) {
     return [];
   }
 
-  return data;
+  return response.data.results.docs || [];
 };
 
 module.exports = fetchLocations;
