@@ -18,7 +18,6 @@ const SearchWidget = () => {
       fetchLocations(debouncedQuery).then(setSearchResults);
     } else {
       setSearchResults(null);
-      setShowResults(false);
     }
   }, [debouncedQuery]);
 
