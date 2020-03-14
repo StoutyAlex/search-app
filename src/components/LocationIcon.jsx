@@ -24,7 +24,7 @@ const LocationIcon = ({ type }) => {
 };
 
 LocationIcon.propTypes = {
-  type: PropTypes.oneOf(Object.keys(typeMap)).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default LocationIcon;

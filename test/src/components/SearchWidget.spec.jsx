@@ -9,7 +9,6 @@ import SearchResults from '../../../src/components/SearchResult';
 import fetchLocations from '../../../src/lib/fetchLocations';
 
 import locationResponse from '../../fixtures/locationResponse.json';
-import LocationIcon from '../../../src/components/LocationIcon';
 
 jest.mock('.../../../src/lib/fetchLocations');
 
