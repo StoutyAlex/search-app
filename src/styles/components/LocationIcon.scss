@@ -25,4 +25,19 @@
     background-color: rgb(91, 91, 91);
     color: white;
   }
+
+  &--district {
+    background-color: rgb(1, 124, 68);
+    color: white;
+  }
+
+  &--region {
+    background-color: rgb(241, 199, 76);
+    color: white;
+  }
+
+  &--place {
+    background-color: rgb(255, 154, 2);
+    color: rgb(34, 34, 34);
+  }
 }
