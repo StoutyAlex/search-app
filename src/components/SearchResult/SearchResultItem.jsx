@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const SearchResultItem = ({ mainText, supportingText, icon }) => {
+const SearchResultItem = ({
+  mainText, supportingText, icon, id,
+}) => {
   const detailClassName = icon ? 'c-search-result-item__detail' : 'c-search-result-item__detail--no-icon';
 
   return (
-    <li className="c-search-result-item">
+    <li className="c-search-result-item" key={id}>
       { icon && (
         <div className="c-search-result-item__icon">
           {icon}
@@ -30,6 +32,7 @@ SearchResultItem.propTypes = {
   mainText: PropTypes.string.isRequired,
   supportingText: PropTypes.string,
   icon: PropTypes.element,
+  id: PropTypes.string.isRequired,
 };
 
 SearchResultItem.defaultProps = {
