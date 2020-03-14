@@ -2,9 +2,27 @@ import React, { useState, useEffect } from 'react';
 
 import InputField from './InputField';
 import SearchResults from './SearchResult';
+import LocationIcon from './LocationIcon';
 
 import fetchLocations from '../lib/fetchLocations';
 import useDebounce from '../lib/useDebounce';
+
+const renderSearchResults = (results, shouldRender) => {
+  if (!results || !shouldRender) return null;
+
+  const formattedResults = results.docs.map((result) => {
+    const icon = <LocationIcon type={result.placeType} />;
+    const supportingText = (result.placeType || result.country) ? `${result.region}, ${result.country}` : null;
+
+    return {
+      mainText: result.name,
+      supportingText,
+      icon,
+    };
+  });
+
+  return <SearchResults results={formattedResults} />;
+};
 
 const SearchWidget = () => {
   const [showResults, setShowResults] = useState(false);
@@ -38,7 +56,7 @@ const SearchWidget = () => {
         onBlur={() => setShowResults(false)}
         onFocus={() => setShowResults(true)}
       />
-      {(showResults && results) && <SearchResults />}
+      {renderSearchResults(results, showResults)}
     </div>
   );
 };
