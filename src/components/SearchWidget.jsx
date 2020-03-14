@@ -11,16 +11,16 @@ const SearchWidget = () => {
   const [query, setQuery] = useState('');
   const [results, setSearchResults] = useState([]);
 
-  const deboundedQuery = useDebounce(query);
+  const debouncedQuery = useDebounce(query);
 
   useEffect(() => {
     if (query.length > 1) {
-      fetchLocations(deboundedQuery).then(setSearchResults);
+      fetchLocations(debouncedQuery).then(setSearchResults);
     } else {
       setSearchResults(null);
       setShowResults(false);
     }
-  }, [deboundedQuery]);
+  }, [debouncedQuery]);
 
   const handleChange = (event) => {
     const { value } = event.target;

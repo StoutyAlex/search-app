@@ -62,4 +62,12 @@ describe('fetchLocations', () => {
 
     expect(result).toEqual([]);
   });
+
+  it('should return empty array if data format changes', async () => {
+    axios.get.mockResolvedValue({ data: { response: [] } });
+
+    const result = await fetchLocations('');
+
+    expect(result).toEqual([]);
+  });
 });
