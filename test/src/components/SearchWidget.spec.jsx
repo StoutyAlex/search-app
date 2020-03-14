@@ -9,6 +9,7 @@ import SearchResults from '../../../src/components/SearchResult';
 import fetchLocations from '../../../src/lib/fetchLocations';
 
 import locationResponse from '../../fixtures/locationResponse.json';
+import LocationIcon from '../../../src/components/LocationIcon';
 
 jest.mock('.../../../src/lib/fetchLocations');
 
@@ -107,6 +108,35 @@ describe('SearchWidget', () => {
       input.simulate('blur');
 
       expect(wrapper.find(SearchResults).exists()).toBe(false);
+    });
+
+    it('renders SearchWidget with formatted data', async () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+
+      const item = locationResponse.data.results.docs[0];
+
+      const expectedFormatting = {
+        mainText: item.name,
+        supportingText: `${item.region}, ${item.country}`,
+        iconType: item.placeType,
+      };
+
+      fetchLocations.mockResolvedValue({ docs: [item] });
+
+      await act(async () => {
+        await input.simulate('change', { target: { value: 'mock-data-input' } });
+        await jest.advanceTimersByTime(500);
+        await input.simulate('focus');
+      });
+
+      const resultWrapper = wrapper.find(SearchResults);
+
+      expect(resultWrapper.props().results[0].mainText).toEqual(expectedFormatting.mainText);
+      expect(resultWrapper.props().results[0].supportingText)
+        .toEqual(expectedFormatting.supportingText);
+
+      expect(resultWrapper.props().results[0].icon.props.type).toBe(expectedFormatting.iconType);
     });
   });
 });
