@@ -31,7 +31,7 @@ module.exports = {
       .waitForElementVisible('.c-search-results')
       .setVal('.c-input-field__input', 'm')
       .pause(3000)
-      .assert.screenshotIdenticalToBaseline(searchWidget, 'Search Results Disapear');
+      .assert.screenshotIdenticalToBaseline(searchWidget, 'Search Results Disapear 1 character');
   },
 
   'No Results found': function (browser) {
@@ -41,4 +41,25 @@ module.exports = {
       .pause(3000)
       .assert.screenshotIdenticalToBaseline(searchWidget, 'No results found');
   },
+
+  'onBlur hides search results': function (browser) {
+    browser
+      .setVal('.c-input-field__input', 'manchester')
+      .waitForElementVisible('.c-search-results')
+      .onBlur('.c-input-field__input')
+      .assert.screenshotIdenticalToBaseline(searchWidget, 'onBlur search results');
+  },
+
+  'onFocus reveals search results': function (browser) {
+    browser
+      .setVal('.c-input-field__input', 'manchester')
+      .waitForElementVisible('.c-search-results')
+      .onBlur('.c-input-field__input')
+      .pause(1000)
+      .onFocus('.c-input-field__input')
+      .waitForElementVisible('.c-search-results')
+      .assert.screenshotIdenticalToBaseline(searchWidget, 'onFocus search results');
+  },
+
+  // Another test that checks onFocus & onBlur
 };
