@@ -15,6 +15,7 @@ jest.mock('.../../../src/lib/fetchLocations');
 describe('SearchWidget', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.useFakeTimers();
     fetchLocations.mockResolvedValue(locationResponse.data.results);
   });
 
@@ -44,7 +45,10 @@ describe('SearchWidget', () => {
     const wrapper = mount(<SearchWidget />);
     const input = wrapper.find('input');
 
-    input.simulate('change', { target: { value: 'Hello' } });
+    await act(async () => {
+      await input.simulate('change', { target: { value: 'Hello' } });
+      await jest.advanceTimersByTime(500);
+    });
 
     expect(fetchLocations).toHaveBeenCalledWith('Hello');
   });
@@ -69,6 +73,7 @@ describe('SearchWidget', () => {
 
       await act(async () => {
         await input.simulate('change', { target: { value: 'Hello' } });
+        await jest.advanceTimersByTime(1000);
         await input.simulate('focus');
       });
 
@@ -81,12 +86,17 @@ describe('SearchWidget', () => {
 
       await act(async () => {
         await input.simulate('change', { target: { value: 'Hello' } });
+        await jest.advanceTimersByTime(500);
         await input.simulate('focus');
       });
 
       expect(wrapper.find(SearchResults).exists()).toBe(true);
 
-      input.simulate('change', { target: { value: 'a' } });
+      await act(async () => {
+        await input.simulate('change', { target: { value: 'a' } });
+        await jest.advanceTimersByTime(500);
+        await input.simulate('focus');
+      });
 
       expect(wrapper.find(SearchResults).exists()).toBe(false);
     });

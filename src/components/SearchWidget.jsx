@@ -4,19 +4,23 @@ import InputField from './InputField';
 import SearchResults from './SearchResult';
 
 import fetchLocations from '../lib/fetchLocations';
+import useDebounce from '../lib/useDebounce';
 
 const SearchWidget = () => {
   const [showResults, setShowResults] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setSearchResults] = useState([]);
 
+  const deboundedQuery = useDebounce(query);
+
   useEffect(() => {
     if (query.length > 1) {
-      fetchLocations(query).then(setSearchResults);
+      fetchLocations(deboundedQuery).then(setSearchResults);
     } else {
       setSearchResults(null);
+      setShowResults(false);
     }
-  }, [query]);
+  }, [deboundedQuery]);
 
   const handleChange = (event) => {
     const { value } = event.target;
