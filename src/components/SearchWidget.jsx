@@ -6,12 +6,13 @@ import LocationIcon from './LocationIcon';
 
 import fetchLocations from '../lib/fetchLocations';
 import useDebounce from '../lib/useDebounce';
+import getPlaceType from '../lib/getPlaceType';
 
 const renderSearchResults = (results, shouldRender) => {
   if (!results || !shouldRender) return null;
 
   const formattedResults = results.docs.map((result) => {
-    const icon = <LocationIcon type={result.placeType} />;
+    const icon = getPlaceType(result.placeType) ? <LocationIcon type={result.placeType} /> : null;
     const supportingText = (result.placeType || result.country) ? `${result.region}, ${result.country}` : null;
 
     return {

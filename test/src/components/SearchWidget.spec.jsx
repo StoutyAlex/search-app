@@ -137,5 +137,27 @@ describe('SearchWidget', () => {
 
       expect(resultWrapper.props().results[0].icon.props.type).toBe(expectedFormatting.iconType);
     });
+
+    it('sets icon to null when result does not have a valid placeType', async () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+
+      const item = locationResponse.data.results.docs[0];
+      delete item.placeType;
+
+      const expectedIcon = null;
+
+      fetchLocations.mockResolvedValue({ docs: [item] });
+
+      await act(async () => {
+        await input.simulate('change', { target: { value: 'mock-data-input' } });
+        await jest.advanceTimersByTime(500);
+        await input.simulate('focus');
+      });
+
+      const resultWrapper = wrapper.find(SearchResults);
+
+      expect(resultWrapper.props().results[0].icon).toBe(expectedIcon);
+    });
   });
 });
