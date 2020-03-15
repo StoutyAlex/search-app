@@ -4,13 +4,15 @@ import LocationIcon from '../../src/components/LocationIcon';
 
 import { withPropsTable } from 'storybook-addon-react-docgen';
 import { withKnobs, number, text } from "@storybook/addon-knobs";
+import { jsxDecorator } from 'storybook-addon-jsx';
+import { withA11y } from '@storybook/addon-a11y';
 
 import '../../src/styles/components/SearchResultItem.scss';
 
 export default {
   title: 'SearchResultItem',
   component: SearchResultItem,
-  decorators: [withKnobs, withPropsTable],
+  decorators: [withKnobs, withPropsTable, jsxDecorator, withA11y],
 };
 
 export const basic = () => {

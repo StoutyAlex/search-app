@@ -16,6 +16,8 @@ module.exports = {
     '@storybook/addon-knobs/register',
     '@storybook/addon-actions/register',
     'storybook-addon-react-docgen/register',
+    'storybook-addon-jsx',
+    '@storybook/addon-a11y'
   ],
   stories: ['./components/**/*.stories.[tj]s'],
 };

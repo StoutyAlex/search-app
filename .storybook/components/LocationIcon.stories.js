@@ -3,19 +3,24 @@ import LocationIcon from '../../src/components/LocationIcon';
 
 import { withPropsTable } from 'storybook-addon-react-docgen';
 import { withKnobs, number, select } from "@storybook/addon-knobs";
+import { jsxDecorator } from 'storybook-addon-jsx';
+import { withA11y } from '@storybook/addon-a11y';
 
-import '../../src/styles/components/LocationIcon.scss';
+import '../../src/styles/_all.scss';
 
 const options = {
   'Airport': 'A',
   'City': 'C',
-  'Station': 'T'
-}
+  'Station': 'T',
+  'Region': 'R',
+  'District': 'D',
+  'Place': 'G',
+};
 
 export default {
   title: 'LocationIcon',
   component: LocationIcon,
-  decorators: [withKnobs, withPropsTable],
+  decorators: [withKnobs, withPropsTable, jsxDecorator, withA11y],
 };
 
 export const withoutContainer = () => {
