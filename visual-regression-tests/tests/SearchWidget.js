@@ -60,6 +60,4 @@ module.exports = {
       .waitForElementVisible('.c-search-results')
       .assert.screenshotIdenticalToBaseline(searchWidget, 'onFocus search results');
   },
-
-  // Another test that checks onFocus & onBlur
 };
