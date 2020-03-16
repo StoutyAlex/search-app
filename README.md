@@ -2,4 +2,4 @@
 
 ## Storybook
 
-(https://stoutyalex.github.io/search-app/storybook)[Storybook]
+[https://stoutyalex.github.io/search-app/storybook](Storybook)
