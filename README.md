@@ -34,6 +34,9 @@ npm run test:unit
 npm run test:lint
 ```
 
+### Manual Testing
+Manually tested on IE11 and Safari browsers. Used Polyfill and Babel to achieve this
+
 ### Visual Regression Tests
 Visual Regression Tests act as the integration/End to End tests to check that everything is working as required.
 
