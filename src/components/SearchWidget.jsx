@@ -13,7 +13,7 @@ const renderSearchResults = (results, shouldRender) => {
 
   const formattedResults = results.docs.map((result) => {
     const icon = getPlaceType(result.placeType) ? <LocationIcon type={result.placeType} /> : null;
-    const supportingText = (result.placeType && result.country) ? `${result.region}, ${result.country}` : null;
+    const supportingText = [result.region, result.country].filter(Boolean).join(', ');
 
     return {
       mainText: result.name,

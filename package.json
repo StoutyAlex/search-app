@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run test:lint && npm run test:unit",
-    "test:unit": "jest",
+    "test:unit": "jest --silent",
     "test:watch": "jest --watch",
     "test:lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test:e2e": "nightwatch -c nightwatch.json",

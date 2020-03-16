@@ -30,7 +30,7 @@ const mockResults = [
 describe('SearchResults', () => {
   it('renders no SearchResultItems when results is empty array', () => {
     const wrapper = mount(<SearchResults results={[]} />);
-    expect(wrapper.find(SearchResultItem).length).toBe(0);
+    expect(wrapper.find(SearchResultItem).exists()).toBe(false);
   });
 
   it('renders correct amount of SearchResultItems when results is valid', () => {
