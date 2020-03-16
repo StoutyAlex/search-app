@@ -9,6 +9,7 @@
     "test:watch": "jest --watch",
     "test:lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test:e2e": "nightwatch -c nightwatch.json",
+    "test:e2e:local": "LOCAL=true npm run test:e2e",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "storybook": "start-storybook"

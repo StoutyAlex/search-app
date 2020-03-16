@@ -4,11 +4,14 @@ const inputField = '.c-input-field__input';
 // need this to handle cursor blinking
 const options = { threashold: 0.01 };
 
+const url = process.env.LOCAL === 'true' ? 'localhost:8080' : 'https://stoutyalex.github.io/search-app';
+console.log(url);
+
 module.exports = {
 
   beforeEach(browser) {
     browser
-    .url('localhost:8080')
+    .url(url)
     .waitForElementVisible('body')
   },
 
