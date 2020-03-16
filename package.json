@@ -20,6 +20,7 @@
     "axios": "^0.19.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.0"
   },
   "devDependencies": {
@@ -66,6 +67,20 @@
     },
     "setupFiles": [
       "<rootDir>/test/setup/test-setup.js"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }
