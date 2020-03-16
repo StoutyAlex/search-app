@@ -80,6 +80,29 @@ describe('SearchWidget', () => {
       expect(wrapper.find(SearchResults).exists()).toBe(true);
     });
 
+    it('sends undefined supportingText when country and region are not defined', async () => {
+      const wrapper = mount(<SearchWidget />);
+      const input = wrapper.find('input');
+
+      const objectWithoutSupporting = { ...locationResponse.data.results.docs[0] };
+
+      delete objectWithoutSupporting.country;
+      delete objectWithoutSupporting.region;
+
+      fetchLocations.mockResolvedValue({ docs: [objectWithoutSupporting] });
+
+      await act(async () => {
+        await input.simulate('change', { target: { value: 'Hello' } });
+        await jest.advanceTimersByTime(1000);
+        await input.simulate('focus');
+      });
+
+      const searchResultWrapper = wrapper.find(SearchResults);
+
+      expect(searchResultWrapper.exists()).toBe(true);
+      expect(searchResultWrapper.props().supportingText).toBe(undefined);
+    });
+
     it('hides search results when text goes back to < 1', async () => {
       const wrapper = mount(<SearchWidget />);
       const input = wrapper.find('input');
