@@ -11,7 +11,7 @@
     "test:e2e": "nightwatch -c nightwatch.json",
     "test:e2e:local": "LOCAL=true npm run test:e2e",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --open --mode production",
     "storybook": "start-storybook"
   },
   "author": "Alex Stout",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-destructuring": "^7.8.8",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@storybook/addon-a11y": "^5.3.17",

@@ -4,10 +4,15 @@
       "@babel/preset-env",
       {
         "targets": {
-          "node": "current"
+          "node": "current",
+          "ie": "11"
         }
       }
     ],
     "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/plugin-transform-destructuring"
   ]
 }
