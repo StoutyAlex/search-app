@@ -1,6 +1,7 @@
 # Search App
 
 You can find the search app example [here](https://stoutyalex.github.io/search-app)
+Storybook of the components [here](https://stoutyalex.github.io/search-app/storybook)
 
 ## Run Locally
 To run the search app locally clone the repo
