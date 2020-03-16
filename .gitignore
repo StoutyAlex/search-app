@@ -4,3 +4,5 @@ build
 .DS_Store
 coverage
 chromedriver.log
+vrt/diff
+vrt/latest

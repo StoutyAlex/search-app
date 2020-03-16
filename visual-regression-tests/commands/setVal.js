@@ -4,5 +4,6 @@ module.exports.command = function (selectors, text) {
     document.querySelector(selector).value = '';
   }, [selectors]);
 
+  this.onFocus(selectors);
   this.setValue(selectors, text);
 };
